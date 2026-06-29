@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AG. | Portfolio</title>
+    <title>Andrew Geo | Portfolio</title>
     
     <style>
         /* ==========================================
@@ -24,10 +24,9 @@
             scroll-behavior: smooth;
         }
 
-        /* Explicitly force scrolling behavior on the body container */
         body {
             overflow-x: hidden;
-            overflow-y: scroll !important; 
+            overflow-y: auto; 
             display: flex;
             flex-direction: column;
         }
@@ -37,18 +36,13 @@
            ========================================== */
         .hero {
             width: 100%;
-            min-height: 100vh; /* Changed from height to min-height for mobile stability */
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 2rem 1rem;
             position: relative;
-            flex-shrink: 0;
-        }
-
-        .hero-content {
-            z-index: 2;
         }
 
         .badge {
@@ -93,14 +87,13 @@
         }
 
         /* ==========================================
-           3. MAIN CONTENT AREA
+           3. MAIN SCROLLABLE CONTENT AREA
            ========================================== */
         .content-container {
             width: 100%;
             max-width: 800px;
             margin: 0 auto;
             padding: 0 1.5rem 5rem 1.5rem;
-            flex-shrink: 0;
         }
 
         .content-section {
@@ -118,8 +111,10 @@
             color: #94a3b8;
             line-height: 1.7;
             font-size: 1.05rem;
+            margin-bottom: 1rem;
         }
 
+        /* Project & Education Cards */
         .card {
             background: rgba(30, 41, 59, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -131,6 +126,38 @@
         .card h3 {
             margin-bottom: 0.5rem;
             color: #ffffff;
+            font-size: 1.3rem;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: #60a5fa;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* Grid for Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background: rgba(30, 41, 59, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 0.75rem;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #cbd5e1;
         }
     </style>
 </head>
@@ -140,6 +167,7 @@
         <div class="logo">AG.</div>
     </header>
 
+    <!-- Hero / Intro Section -->
     <section class="hero">
         <div class="hero-content">
             <span class="badge">Welcome to my Portfolio</span>
@@ -147,30 +175,72 @@
         </div>
     </section>
 
+    <!-- Main Content Area -->
     <main class="content-container">
+        
+        <!-- About Section -->
         <section id="about" class="content-section">
             <h2>About Me</h2>
-            <p>Welcome to my space. I specialize in electronics, embedded systems, and building sleek digital experiences.</p>
+            <p>I am an Electronics and Communication Engineering student at Christ College of Engineering, Irinjalakuda. Passionate about embedded hardware logic, interactive system architectures, and smart wearable tech design.</p>
         </section>
 
+        <!-- Education Section -->
+        <section id="education" class="content-section">
+            <h2>Education & Certifications</h2>
+            <div class="card">
+                <h3>B.Tech in Electronics and Communication Engineering</h3>
+                <div class="card-meta">Christ College of Engineering</div>
+                <p>Focusing on microcontrollers, hardware design, and signal systems architecture.</p>
+            </div>
+            <div class="card">
+                <h3>Robotics Certification</h3>
+                <div class="card-meta">NPTEL / IIT Madras</div>
+                <p>Advanced 8-week structured course program exploring robot kinematics, dynamics, and industrial automation control paradigms.</p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
         <section id="projects" class="content-section">
-            <h2>Projects</h2>
+            <h2>Featured Projects</h2>
             
             <div class="card">
                 <h3>Dextra</h3>
-                <p>A custom-built, switch-controlled wrist-hand orthosis engineered to assist with rehabilitation and functional independence.</p>
+                <div class="card-meta">Hardware / Upper Limb Rehabilitation</div>
+                <p>A custom-built, switch-controlled wrist-hand orthosis designed to actively assist with mechanical rehabilitation routines and enhance day-to-day functional independence for users experiencing upper limb weakness.</p>
             </div>
 
             <div class="card">
                 <h3>Smart Compression Band</h3>
-                <p>An intelligent wearable device for athletes utilizing motion and pressure telemetry to actively analyze joint tracking and help safely prevent injuries.</p>
+                <div class="card-meta">Wearables / IoT Telemetry</div>
+                <p>An intelligent wearable sleeve utilizing embedded IMU tracking hardware and localized pressure array telemetry to monitor real-time joint angular deflection profiles, aimed at actively preventing injuries for high-impact athletes.</p>
+            </div>
+
+            <div class="card">
+                <h3>Online Campus Token System</h3>
+                <div class="card-meta">Web Logistics / Automation</div>
+                <p>Designed a digital system replacing traditional manual paper workflows, managing seamless cloud verification parameters for hostel dining passes and remote food pre-booking optimizations.</p>
             </div>
         </section>
 
+        <!-- Technical Skills Section -->
+        <section id="skills" class="content-section">
+            <h2>Core Capabilities</h2>
+            <div class="skills-grid">
+                <div class="skill-tag">ESP32 / MCU</div>
+                <div class="skill-tag">Embedded C++</div>
+                <div class="skill-tag">Python Architecture</div>
+                <div class="skill-tag">Circuit Telemetry</div>
+                <div class="skill-tag">Hardware Integration</div>
+                <div class="skill-tag">Web Platforms</div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
         <section id="contact" class="content-section">
             <h2>Get In Touch</h2>
-            <p>Ready to build something together? Reach out or check out my work over on GitHub.</p>
+            <p>Looking to collaborate on embedded hardware engineering or software development initiatives? Let's connect.</p>
         </section>
+
     </main>
 
 </body>
