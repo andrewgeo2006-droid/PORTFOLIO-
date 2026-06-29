@@ -18,25 +18,33 @@
         html, body {
             width: 100%;
             min-height: 100vh;
-            overflow-y: auto; /* CRITICAL FIX: Ensures your site can scroll on all screens */
             background-color: #050b14; /* Deep dark blue background */
             color: #ffffff;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             scroll-behavior: smooth;
         }
 
+        /* Explicitly force scrolling behavior on the body container */
+        body {
+            overflow-x: hidden;
+            overflow-y: scroll !important; 
+            display: flex;
+            flex-direction: column;
+        }
+
         /* ==========================================
-           2. HERO SECTION (What shows on page load)
+           2. HERO SECTION
            ========================================== */
         .hero {
             width: 100%;
-            height: 100vh; /* Takes up exactly the full initial viewport screen */
+            min-height: 100vh; /* Changed from height to min-height for mobile stability */
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 1rem;
+            padding: 2rem 1rem;
             position: relative;
+            flex-shrink: 0;
         }
 
         .hero-content {
@@ -62,10 +70,10 @@
         }
 
         .highlight {
-            color: #60a5fa; /* Sleek blue accent color */
+            color: #60a5fa;
         }
 
-        /* Nav Header Placeholder */
+        /* Nav Header */
         .nav-header {
             position: absolute;
             top: 0;
@@ -75,6 +83,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            z-index: 10;
         }
 
         .logo {
@@ -84,12 +93,14 @@
         }
 
         /* ==========================================
-           3. MAIN SCROLLABLE CONTENT AREA
+           3. MAIN CONTENT AREA
            ========================================== */
         .content-container {
+            width: 100%;
             max-width: 800px;
             margin: 0 auto;
             padding: 0 1.5rem 5rem 1.5rem;
+            flex-shrink: 0;
         }
 
         .content-section {
@@ -109,7 +120,6 @@
             font-size: 1.05rem;
         }
 
-        /* Cards for Projects/Skills */
         .card {
             background: rgba(30, 41, 59, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -126,12 +136,10 @@
 </head>
 <body>
 
-    <!-- Simple Navigation bar overlaying the Hero background -->
     <header class="nav-header">
         <div class="logo">AG.</div>
     </header>
 
-    <!-- Hero / Intro Section (Matches your exact layout design) -->
     <section class="hero">
         <div class="hero-content">
             <span class="badge">Welcome to my Portfolio</span>
@@ -139,9 +147,7 @@
         </div>
     </section>
 
-    <!-- Main Content Layout (Safely drops below the fold and allows scrolling) -->
     <main class="content-container">
-        
         <section id="about" class="content-section">
             <h2>About Me</h2>
             <p>Welcome to my space. I specialize in electronics, embedded systems, and building sleek digital experiences.</p>
@@ -165,7 +171,6 @@
             <h2>Get In Touch</h2>
             <p>Ready to build something together? Reach out or check out my work over on GitHub.</p>
         </section>
-
     </main>
 
 </body>
