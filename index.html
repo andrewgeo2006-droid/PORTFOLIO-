@@ -1,75 +1,172 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrew Geo | Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            light: '#3b82f6',
-                            dark: '#60a5fa',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>AG. | Portfolio</title>
+    
     <style>
-        .profile-photo {
-            object-fit: cover;
-            object-position: center top;
+        /* ==========================================
+           1. GLOBAL RESET & BASE STYLES
+           ========================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100vh;
+            overflow-y: auto; /* CRITICAL FIX: Ensures your site can scroll on all screens */
+            background-color: #050b14; /* Deep dark blue background */
+            color: #ffffff;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* ==========================================
+           2. HERO SECTION (What shows on page load)
+           ========================================== */
+        .hero {
+            width: 100%;
+            height: 100vh; /* Takes up exactly the full initial viewport screen */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .badge {
+            background-color: rgba(30, 41, 59, 0.7);
+            color: #60a5fa;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .highlight {
+            color: #60a5fa; /* Sleek blue accent color */
+        }
+
+        /* Nav Header Placeholder */
+        .nav-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #60a5fa;
+        }
+
+        /* ==========================================
+           3. MAIN SCROLLABLE CONTENT AREA
+           ========================================== */
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem 5rem 1.5rem;
+        }
+
+        .content-section {
+            padding: 5rem 0 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .content-section h2 {
+            font-size: 1.8rem;
+            color: #60a5fa;
+            margin-bottom: 1.2rem;
+        }
+
+        .content-section p {
+            color: #94a3b8;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Cards for Projects/Skills */
+        .card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.5rem;
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: #ffffff;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 transition-colors duration-300">
+<body>
 
-    <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-            <a href="#" class="text-xl font-bold tracking-wider text-blue-600 dark:text-blue-400">AG.</a>
-            
-            <nav class="hidden md:flex items-center space-x-8 font-medium">
-                <a href="#about" class="hover:text-blue-500 transition">About</a>
-                <a href="#skills" class="hover:text-blue-500 transition">Skills</a>
-                <a href="#projects" class="hover:text-blue-500 transition">Projects</a>
-                <a href="#education" class="hover:text-blue-500 transition">Education</a>
-                <a href="#contact" class="hover:text-blue-500 transition">Contact</a>
-                <button id="theme-toggle-desktop" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition">
-                    <i class="fa-solid fa-moon dark:hidden"></i>
-                    <i class="fa-solid fa-sun hidden dark:block"></i>
-                </button>
-            </nav>
-
-            <div class="flex items-center space-x-4 md:hidden">
-                <button id="theme-toggle-mobile" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition">
-                    <i class="fa-solid fa-moon dark:hidden"></i>
-                    <i class="fa-solid fa-sun hidden dark:block"></i>
-                </button>
-                <button id="menu-btn" class="p-2 text-xl focus:outline-none">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 px-4 py-4 space-y-3">
-            <a href="#about" class="block py-2 hover:text-blue-500 transition">About</a>
-            <a href="#skills" class="block py-2 hover:text-blue-500 transition">Skills</a>
-            <a href="#projects" class="block py-2 hover:text-blue-500 transition">Projects</a>
-            <a href="#education" class="block py-2 hover:text-blue-500 transition">Education</a>
-            <a href="#contact" class="block py-2 hover:text-blue-500 transition">Contact</a>
-        </div>
+    <!-- Simple Navigation bar overlaying the Hero background -->
+    <header class="nav-header">
+        <div class="logo">AG.</div>
     </header>
 
-    <section class="min-h-screen flex items-center justify-center pt-16 bg-gradient-to-br from-slate-50 via-white to-blue-50 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <span class="inline-block px-3 py-1 text-sm font-semibold tracking-wider text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-950/50 rounded-full mb-4">Welcome to my Portfolio</span>
-            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-4">
-                Hi, I'm <span class="bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent dark:from-blue-400 dark:to-indigo-300">Andrew Geo</span>
-            </h1>
-            <p class="text-xl sm:text-2xl text-slate
+    <!-- Hero / Intro Section (Matches your exact layout design) -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="badge">Welcome to my Portfolio</span>
+            <h1>Hi, I'm <span class="highlight">Andrew Geo</span></h1>
+        </div>
+    </section>
+
+    <!-- Main Content Layout (Safely drops below the fold and allows scrolling) -->
+    <main class="content-container">
+        
+        <section id="about" class="content-section">
+            <h2>About Me</h2>
+            <p>Welcome to my space. I specialize in electronics, embedded systems, and building sleek digital experiences.</p>
+        </section>
+
+        <section id="projects" class="content-section">
+            <h2>Projects</h2>
+            
+            <div class="card">
+                <h3>Dextra</h3>
+                <p>A custom-built, switch-controlled wrist-hand orthosis engineered to assist with rehabilitation and functional independence.</p>
+            </div>
+
+            <div class="card">
+                <h3>Smart Compression Band</h3>
+                <p>An intelligent wearable device for athletes utilizing motion and pressure telemetry to actively analyze joint tracking and help safely prevent injuries.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section">
+            <h2>Get In Touch</h2>
+            <p>Ready to build something together? Reach out or check out my work over on GitHub.</p>
+        </section>
+
+    </main>
+
+</body>
+</html>
